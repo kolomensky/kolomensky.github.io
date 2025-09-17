@@ -2,6 +2,14 @@
 FROM nginx:alpine
 USER root
 
+RUN mkdir -p /var/cache/nginx/client_temp \
+             /var/cache/nginx/proxy_temp \
+             /var/cache/nginx/fastcgi_temp \
+             /var/cache/nginx/uwsgi_temp \
+             /var/cache/nginx/scgi_temp && \
+    chown -R nginx:nginx /var/cache/nginx && \
+    chmod -R 755 /var/cache/nginx
+
 # Удаляем дефолтную конфигурацию nginx, которая слушает на порту 80
 RUN rm /etc/nginx/conf.d/default.conf
 
