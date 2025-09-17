@@ -1,5 +1,6 @@
 # Используем официальный образ nginx на Alpine (очень легкий)
 FROM nginx:alpine
+USER root
 
 # Удаляем дефолтную конфигурацию nginx, которая слушает на порту 80
 RUN rm /etc/nginx/conf.d/default.conf
